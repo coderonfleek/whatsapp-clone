@@ -1,0 +1,14 @@
+.menu-bar {
+  --background: #128c7e;
+  --color: #ebecf0;
+  border: none;
+}
+
+.tabButton {
+  --color-selected: white;
+  font-weight: bold;
+}
+
+.tab-selected {
+  border-bottom: 3px solid white;
+}
