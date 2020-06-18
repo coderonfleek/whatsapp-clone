@@ -50,3 +50,8 @@
   margin-right: auto;
   margin-left: auto;
 }
+
+/* Chat Page */
+.chat-screen {
+  --padding-end: 10px;
+}
