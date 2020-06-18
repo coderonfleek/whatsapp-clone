@@ -12,3 +12,41 @@
 .tab-selected {
   border-bottom: 3px solid white;
 }
+
+/* Login Page */
+
+.login-bar {
+  --background: #128c7e;
+  --color: white;
+  border: none;
+}
+
+.passcode-text {
+  text-align: center;
+  width: 80%;
+  margin-top: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  font-family: Arial;
+  line-height: 1.4em;
+}
+
+.passcode-input-section {
+  width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.passcode-input {
+  --border-color: #128c7e;
+}
+
+.login-button {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  width: 100px;
+  margin-right: auto;
+  margin-left: auto;
+}

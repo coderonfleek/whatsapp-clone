@@ -1,36 +1,23 @@
 import React, { createContext, useReducer } from "react";
 import db from "./FireStore";
-import { useParams } from "react-router";
 
 let AppContext = createContext({});
 
 const initialState = {
   count: 0,
-  user: {}
+  user: localStorage.getItem("whatsapp-user")
 };
 
-let reducer = async (state, action) => {
+let reducer = (state, action) => {
   switch (action.type) {
     case "setCount": {
       return { ...state, count: action.payload.count };
     }
 
-    case "loadUsers": {
-      let user;
-      const fetchUser = await db
-        .collection("users")
-        .where("passcode", "==", "1234")
-        .get();
-      console.log(typeof fetchUser);
-      //console.log(fetchUser.doc());
-      /* user = fetchUser[0].data();
-      console.log(user); */
-      fetchUser.forEach((doc) => {
-        //console.log(doc.id, "=>", doc.data().name);
-        user = doc.data();
-        console.log(user);
-      });
-      return { ...state, user: user };
+    case "loadUser": {
+      console.log("Mutation called");
+      localStorage.setItem("whatsapp-user", action.payload.user);
+      return { ...state, user: action.payload.user };
     }
 
     default:
