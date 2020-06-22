@@ -10,10 +10,7 @@ const ChatItem = ({ contact }) => {
   return (
     <IonItem>
       <IonAvatar slot="start">
-        <img
-          src="https://www.dropbox.com/sh/t9iqfzj390fspy3/AAAKkyjggyQT-suQvrphPqJba?dl=0&preview=adam-traore.png"
-          alt="icon"
-        />
+        <img src="https://i.ibb.co/F39CSfs/adam-traore.png" alt="icon" />
       </IonAvatar>
       <IonLabel>
         <h2>{contact.name}</h2>
