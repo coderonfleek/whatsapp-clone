@@ -5,7 +5,7 @@ let AppContext = createContext({});
 
 const initialState = {
   count: 0,
-  user: localStorage.getItem("whatsapp-user")
+  user: JSON.parse(localStorage.getItem("whatsapp-user"))
 };
 
 let reducer = (state, action) => {
@@ -16,7 +16,10 @@ let reducer = (state, action) => {
 
     case "loadUser": {
       console.log("Mutation called");
-      localStorage.setItem("whatsapp-user", action.payload.user);
+      localStorage.setItem(
+        "whatsapp-user",
+        JSON.stringify(action.payload.user)
+      );
       return { ...state, user: action.payload.user };
     }
 
