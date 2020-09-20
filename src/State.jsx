@@ -5,7 +5,9 @@ let AppContext = createContext({});
 
 const initialState = {
   count: 0,
-  user: JSON.parse(localStorage.getItem("whatsapp-user"))
+  user: JSON.parse(localStorage.getItem("whatsapp-user")),
+  noTabs: false,
+  chattingWith: {}
 };
 
 let reducer = (state, action) => {
@@ -21,6 +23,14 @@ let reducer = (state, action) => {
         JSON.stringify(action.payload.user)
       );
       return { ...state, user: action.payload.user };
+    }
+
+    case "setNoTabs": {
+      return { ...state, noTabs: action.payload };
+    }
+
+    case "setChattingWith": {
+      return { ...state, chattingWith: action.payload };
     }
 
     default:
