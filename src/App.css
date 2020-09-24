@@ -55,3 +55,14 @@
 .chat-screen {
   --padding-end: 10px;
 }
+
+.chat-send-button {
+  --border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  --background: #128c7e;
+}
+
+.media-icon {
+  transform: rotate(40deg);
+}
