@@ -2,7 +2,7 @@ const Utility = {
   genRandom
 };
 
-function genRandom(length) {
+function genRandom(length = 7) {
   var chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var result = "";
   for (var i = length; i > 0; --i)
