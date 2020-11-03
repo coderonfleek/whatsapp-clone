@@ -66,3 +66,9 @@
 .media-icon {
   transform: rotate(40deg);
 }
+
+.chat-page-content {
+  --background: #ecefdd;
+  --padding-start: 10px;
+  --padding-end: 10px;
+}

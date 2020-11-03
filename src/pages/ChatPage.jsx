@@ -93,7 +93,7 @@ const ChatPage = () => {
           <IonTitle>{state.chattingWith.name}</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
+      <IonContent className="chat-page-content">
 
         {chatMessages.map((chat) => (
         <ChatMessage key={chat.message_id} chat={chat} />
