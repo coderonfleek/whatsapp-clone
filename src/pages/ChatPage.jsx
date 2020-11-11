@@ -24,6 +24,9 @@ import { sendSharp, happyOutline, linkOutline } from "ionicons/icons";
 import Utility from "../Utility";
 import ChatMessage from "../components/ChatMessage";
 
+import { Plugins, CameraResultType } from '@capacitor/core';
+const { Camera } = Plugins;
+
 const ChatPage = () => {
   const { state, dispatch } = useContext(AppContext);
   const [message, setMessage] = useState();
@@ -60,17 +63,29 @@ const ChatPage = () => {
     messageSubscription()
   });
 
-  
+  const getImage = async () => {
+    const image = await Camera.getPhoto({
+      quality: 90,
+      allowEditing: false,
+      resultType: CameraResultType.Base64
+    });
 
-  const sendMessage = async () => {
-    if (message) {
+    let imageUrl = image.webPath;
+
+    console.log(image);
+
+    await sendMessage("media", image.base64String)
+  }
+
+  const sendMessage = async (type = "text", file = null) => {
+    if (message || type === "media") {
       let messageBody = {
         message_id: Utility.genRandom(),
         sent_by: state.user.user_id,
         channel: `${state.user.user_id},${state.chattingWith.user_id}`,
-        type: "text",
-        message: message,
-        file_url: null,
+        type: type,
+        message: message || "",
+        file_url: file,
         time: +Date.now()
       };
 
@@ -123,6 +138,7 @@ const ChatPage = () => {
                         icon={linkOutline}
                         size="large"
                         className="media-icon"
+                        onClick={() => getImage()}
                       ></IonIcon>
                     </IonCol>
                   </IonRow>

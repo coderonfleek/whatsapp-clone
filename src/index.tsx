@@ -6,6 +6,8 @@ import { AppContextProvider } from "./State";
 
 import { IonToolbar, IonTitle } from "@ionic/react";
 
+import {defineCustomElements} from "@ionic/pwa-elements/loader"
+
 const RootComponent = () => {
   return (
     <AppContextProvider>
@@ -15,6 +17,8 @@ const RootComponent = () => {
 };
 
 ReactDOM.render(<RootComponent />, document.getElementById("root"));
+
+defineCustomElements(window);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
