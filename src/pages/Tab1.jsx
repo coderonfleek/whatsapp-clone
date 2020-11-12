@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import {
   IonContent,
   IonHeader,
@@ -17,6 +17,7 @@ import { AppContext } from "../State";
 
 const Tab1 = () => {
   const { state, dispatch } = useContext(AppContext);
+  
 
   return (
     <IonPage>

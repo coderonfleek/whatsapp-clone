@@ -31,6 +31,7 @@ const ChatPage = () => {
   const { state, dispatch } = useContext(AppContext);
   const [message, setMessage] = useState();
   const [chatMessages = [], setChatMessages] = useState();
+  
   let messageSubscription = useRef(null);
   
   useIonViewDidEnter(async () => {
@@ -94,6 +95,8 @@ const ChatPage = () => {
       setMessage(null);
     }
   };
+
+  
 
   return (
     <IonPage>

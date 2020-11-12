@@ -1,9 +1,10 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useRef, useState, useEffect } from "react";
 
 import {
   IonItem,
   IonAvatar,
   IonLabel,
+  IonBadge,
   useIonViewDidEnter
 } from "@ionic/react";
 
@@ -14,6 +15,15 @@ import db from "../FireStore"
 const ChatItem = ({ contact }) => {
   const { state, dispatch } = useContext(AppContext);
   const [lastMessage = {}, setLastMessage] = useState();
+  const [newMessageCount = 0, setNewMessageCount] = useState();
+  const [previousLastMessage = {}, setPreviousLastMessage] = useState();
+  
+
+  useEffect(() => {
+    if(lastMessage.message_id !== previousLastMessage.message_id){
+      setNewMessageCount(newMessageCount + 1)
+    }
+  }, [lastMessage])
 
   let history = useHistory();
 
@@ -28,6 +38,8 @@ const ChatItem = ({ contact }) => {
     let channel1 = `${state.user.user_id},${contact.user_id}`;
     let channel2 = `${contact.user_id},${state.user.user_id}`;
 
+    
+
     messageSubscription = await db.collection("messages").where("channel", "in", [channel1, channel2])
     .orderBy("time", "desc")
     .limit(1)
@@ -37,11 +49,15 @@ const ChatItem = ({ contact }) => {
           messages.push(doc.data());
         });
 
+
         if(messages.length > 0){
+
+          setPreviousLastMessage(lastMessage);
+
           setLastMessage(messages[0]);
         }
-        
 
+        
     });
   });
 
@@ -67,6 +83,7 @@ const ChatItem = ({ contact }) => {
         <h2>{contact.name}</h2>
         <p>{lastMessage.message || "..."}</p>
       </IonLabel>
+      {newMessageCount > 0 && <IonBadge color="success" slot="end">{newMessageCount}</IonBadge>}
     </IonItem>
   );
 };
