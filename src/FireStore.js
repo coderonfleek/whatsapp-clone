@@ -2,8 +2,8 @@ import firebase from "firebase";
 
 const db = firebase
   .initializeApp({
-    projectId: "whatsapp-clone-2d48b",
-    databaseURL: "https://whatsapp-clone-2d48b.firebaseio.com"
+    projectId: "YOUR_PROJECT_ID",
+    databaseURL: "YOUR_DB_URL"
   })
   .firestore();
 
