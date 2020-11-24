@@ -6,6 +6,7 @@ This project was created for the course [Learn Ionic React By Building a WhatsAp
 
 - Create a Firebase account
 - Create two collections `messages` and `users` in Cloud Firestore
+- Seed your `users` collection the [firebase-seeder](https://github.com/coderonfleek/firebase-seeder) code
 - Replace the credentials in `src/Config.js`
 - Run `ionic serve`
 
