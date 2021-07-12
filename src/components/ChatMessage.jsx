@@ -5,6 +5,7 @@ import {IonImg} from "@ionic/react";
 import Utility from "../Utility"
 import "./ChatMessage.css"
 
+// Chat Component
 const ChatMessage = ({ chat }) => {
 
   const { state, dispatch } = useContext(AppContext);
